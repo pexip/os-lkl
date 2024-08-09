@@ -1,0 +1,16 @@
+diff --git a/tools/lkl/lklfuse.c b/tools/lkl/lklfuse.c
+index d71b4b0df6ef..b8cbb818c8c9 100644
+--- a/tools/lkl/lklfuse.c
++++ b/tools/lkl/lklfuse.c
+@@ -535,6 +535,11 @@ static void *lklfuse_init(struct fuse_conn_info *conn, struct fuse_config *cfg)
+ 	/* lkl provides valid st_ino values */
+ 	cfg->use_ino = 1;
+ 
++	/* enable POSIX ACL support if kernel is capable */
++	if (conn->capable & FUSE_CAP_POSIX_ACL) {
++		conn->want |= FUSE_CAP_POSIX_ACL;
++	}
++
+ 	return NULL;
+ }
+ 

@@ -1,0 +1,13 @@
+diff --git a/tools/lkl/Makefile b/tools/lkl/Makefile
+index 777f97e8a..718fb61c1 100644
+--- a/tools/lkl/Makefile
++++ b/tools/lkl/Makefile
+@@ -132,7 +132,7 @@ libraries_install: $(libs-y:%=$(OUTPUT)%$(SOSUF)) $(OUTPUT)liblkl.a
+ 	    install -d $(DESTDIR)$(LIBDIR) ; \
+ 	    install -m 644 $^ $(DESTDIR)$(LIBDIR)
+ 
+-programs_install: $(progs-y:%=$(OUTPUT)%$(EXESUF))
++programs_install: $(filter-out $(OUTPUT)tests/%$(EXEEXT),$(progs-y:%=$(OUTPUT)%$(EXESUF)))
+ 	$(call QUIET_INSTALL, programs) \
+ 	    install -d $(DESTDIR)$(BINDIR) ; \
+ 	    install -m 755 $^ $(DESTDIR)$(BINDIR)

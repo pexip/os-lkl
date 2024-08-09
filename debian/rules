@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/architecture.mk
+
+%:
+	dh $@ --sourcedirectory=tools/lkl
+
+override_dh_auto_clean:
+	make -C tools/lkl clean-conf
+	@# It turns out that clean... doesn't
+	$(RM) tools/lkl/include/lkl_autoconf.h
+	$(RM) tools/lkl/tests/autoconf.sh
+
+override_dh_auto_build:
+	dh_auto_build -- LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_install:
+	dh_auto_install -- LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+# Disable tests completely, as they need yamlish, which is not packaged
+override_dh_auto_test:

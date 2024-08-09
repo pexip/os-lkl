@@ -1,0 +1,34 @@
+Source: lkl
+Section: misc
+Priority: optional
+Maintainer: Pexip AS <packaging@pexip.com>
+Standards-Version: 4.3.0
+Build-Depends:
+ bc,
+ bison,
+ flex,
+ debhelper-compat (= 13),
+ libarchive-dev,
+ libfuse3-dev,
+ xfsprogs
+Homepage: https://lkl.github.io/
+Vcs-Browser: https://github.com/lkl/linux
+Vcs-Git: https://github.com/lkl/linux.git
+Description: Linux Kernel Library
+
+Package: liblkl
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: ${source:Synopsis} (runtime libraries)
+
+Package: liblkl-dev
+Architecture: any
+Multi-Arch: same
+Depends: liblkl (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: ${source:Synopsis} (development files)
+
+Package: lkl-fs-tools
+Architecture: any
+Depends: liblkl (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: ${source:Synopsis} (filesystem utilities)
