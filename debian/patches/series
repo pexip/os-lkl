@@ -1,3 +1,4 @@
 enable-fuse-acl-support.patch
 build-no-install-tests.patch
 #build-programs-shared.patch
+gcc14-buildfix.patch
