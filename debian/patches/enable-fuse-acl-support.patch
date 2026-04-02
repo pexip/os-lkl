@@ -1,3 +1,4 @@
+Enable Posix ACL support if available.
 diff --git a/tools/lkl/lklfuse.c b/tools/lkl/lklfuse.c
 index d71b4b0df6ef..b8cbb818c8c9 100644
 --- a/tools/lkl/lklfuse.c

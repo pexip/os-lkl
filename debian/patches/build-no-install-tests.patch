@@ -1,3 +1,4 @@
+Do not install test binaries into the package.
 diff --git a/tools/lkl/Makefile b/tools/lkl/Makefile
 index 777f97e8a..718fb61c1 100644
 --- a/tools/lkl/Makefile
